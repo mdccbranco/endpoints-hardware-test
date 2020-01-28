@@ -29,37 +29,37 @@ router.get("/sensors", (req, res, next) => {
 });
 
 // GET route => to get a specific sensor/detailed view
-router.get("/sensors/:id", (req, res, next) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(400).json({ message: "Specified id is not valid" });
-    return;
-  }
+// router.get("/sensors/:id", (req, res, next) => {
+//   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+//     res.status(400).json({ message: "Specified id is not valid" });
+//     return;
+//   }
 
-  Sensor.findById(req.params.id)
-    .then(response => {
-      res.status(200).json(response);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+//   Sensor.findById(req.params.id)
+//     .then(response => {
+//       res.status(200).json(response);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
-// DELETE route => to delete a specific sensor
-router.delete("/sensors/:id", (req, res, next) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(400).json({ message: "Specified id is not valid" });
-    return;
-  }
+// // DELETE route => to delete a specific sensor
+// router.delete("/sensors/:id", (req, res, next) => {
+//   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+//     res.status(400).json({ message: "Specified id is not valid" });
+//     return;
+//   }
 
-  Sensor.findByIdAndRemove(req.params.id)
-    .then(() => {
-      res.json({
-        message: `sensor with ${req.params.id} is removed successfully.`
-      });
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+//   Sensor.findByIdAndRemove(req.params.id)
+//     .then(() => {
+//       res.json({
+//         message: `sensor with ${req.params.id} is removed successfully.`
+//       });
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
 module.exports = router;
