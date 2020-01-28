@@ -7,7 +7,7 @@ const Sensor = require("../models/data");
 // POST route => to create a new sensor
 router.post("/sensors", (req, res, next) => {
   Sensor.create({
-    data: req.body.data,
+    rawData: req.body,
   })
     .then(response => {
       res.json(response);

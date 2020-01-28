@@ -31,4 +31,4 @@ app.use('/api', require('./routes/esp32'));
 // const index = require("./routes/index");
 // app.use("/", index);
 
-module.exports = app;
+app.listen(process.env.PORT, () => console.log("Conectado"));

@@ -5,7 +5,10 @@ const Schema = mongoose.Schema;
 
 const sensorDataSchema = new Schema(
   {
-    rawData: String,
+    rawData: {
+      type: String,
+      required: true,
+    }
   },
   {
     timestamps: true
