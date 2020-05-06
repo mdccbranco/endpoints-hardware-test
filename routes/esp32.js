@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const Sensor = require("../models/data");
+const Json = require("../models/json");
 
 // POST route => to create a new sensor
 router.post("/sensors", (req, res, next) => {
@@ -10,7 +11,13 @@ router.post("/sensors", (req, res, next) => {
     rawData: req.body,
   })
     .then(response => {
-      res.json(response);
+      Json.findById("5eb30d7cbbf06d12a5c77d25")
+      .then(data => {
+        res.json(data.json);
+      })
+      .catch(err => {
+        res.json(err);
+      });
     })
     .catch(err => {
       res.json(err);

@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const hbs = require('hbs');
+
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -25,8 +27,12 @@ const app = express();
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
 // ROUTES MIDDLEWARE STARTS HERE:
 app.use('/api', require('./routes/esp32'));
+app.use('/', require('./routes/json'));
 
 // const index = require("./routes/index");
 // app.use("/", index);

@@ -1,0 +1,12 @@
+<form action="/json" method=POST>
+    <textarea name='json' placeholder="Digite aqui o JSON que será enviado como resposta" ></textarea>
+    {{#with success}}
+    {{#if success}}
+        <p>JSON salvo com sucesso</p>
+        {{else}}
+        <p>Falhou! Tente novamente</p>
+    {{/if}}
+    {{/with}}
+
+    <button>Salvar</button>
+</form>
