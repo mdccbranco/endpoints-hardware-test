@@ -21,8 +21,10 @@ router.post("/json", (req, res, next) => {
   });
   
   router.get("/json", (req, res, next) => {
-    console.log('Aqui')
-    res.render('input-json')
+    Json.findById("5eb30d7cbbf06d12a5c77d25")
+    .then(data => {
+      res.render('input-json', {json:data.json})
+    })
   });
   
 module.exports = router;
