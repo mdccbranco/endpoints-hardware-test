@@ -13,11 +13,11 @@ router.post("/json", (req, res, next) => {
         json
     })
       .then(response => {
-        res.render('input-json', {sucess:true});
+        res.redirect('/json');
       })
       .catch(err => {
-        res.render('input-json', {sucess:false});
-      });
+        res.redirect('/json');  
+    });
   });
   
   router.get("/json", (req, res, next) => {
