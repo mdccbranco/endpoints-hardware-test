@@ -4,24 +4,36 @@ const router = express.Router();
 
 const Sensor = require("../models/data");
 const Json = require("../models/json");
+const Req = require("../models/req");
+
 
 // POST route => to create a new sensor
 router.post("/sensors", (req, res, next) => {
-  Sensor.create({
-    rawData: req.body,
-  })
-    .then(response => {
-      Json.findById("5eb30d7cbbf06d12a5c77d25")
-      .then(data => {
-        res.json(data.json);
+  console.log(req.headers)
+  const {files} = req.headers;
+  Req.create({files})
+  .then(_ => {
+    console.log("Req criado")
+    Sensor.create({
+      rawData: req.body,
+    })
+      .then(response => {
+        Json.findById("5eb30d7cbbf06d12a5c77d25")
+        .then(data => {
+          res.json(data.json);
+        })
+        .catch(err => {
+          res.json(err);
+        });
       })
       .catch(err => {
         res.json(err);
       });
-    })
-    .catch(err => {
-      res.json(err);
-    });
+  })
+  .catch(err => {
+    res.status(500).json({"message": "Requisition error"});
+});
+  
 });
 
 // GET route => to get all the sensors

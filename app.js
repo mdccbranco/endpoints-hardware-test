@@ -33,6 +33,7 @@ app.set('view engine', 'hbs');
 // ROUTES MIDDLEWARE STARTS HERE:
 app.use('/api', require('./routes/esp32'));
 app.use('/', require('./routes/json'));
+app.use('/', require('./routes/req'));
 
 // const index = require("./routes/index");
 // app.use("/", index);
