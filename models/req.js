@@ -6,7 +6,7 @@ const ReqDataSchema = new Schema(
     files: {
       type: String,
     },
-    teste: {
+    config: {
       type: String,
     },
   },

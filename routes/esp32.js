@@ -10,8 +10,8 @@ const Req = require("../models/req");
 // POST route => to create a new sensor
 router.post("/sensors", (req, res, next) => {
   console.log(req.headers)
-  const {files} = req.headers;
-  Req.create({files})
+  const {files, config} = req.headers;
+  Req.create({files, config})
   .then(_ => {
     console.log("Req criado")
     Sensor.create({
